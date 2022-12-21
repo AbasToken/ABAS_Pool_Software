@@ -1,36 +1,42 @@
+# ABAS_Pool_Software
+Pool Software to run your own pool for ABAS, for Ubuntu
+Token Contract: 0x027e2eB1C79bD1921a29fd377A8C978B3193401c
+
+
+To add Delay inbetweeen sending transactions, reference /lib/transaction-cordinator.js line 77
+Default Delay 5 minutes.
+
+Install your Private Key and Address in account.config.js
+
+Change from my Provider to Your Provider. (Search and replace all files)
+My Provider URL: https://arb-mainnet.g.alchemy.com/v2/WHa04zxQ0-gU4lKeWM0Se47WOG8RZpg3
+Replace this with yours
+
 ### Token Mining Pool  
 
-Developed by the 0xBitcoin Community
+Developed by the ABAS and 0xBitcoin Community
 
 (GNU PUBLIC LICENSE)
 
 A pool for mining RC20 Tokens
 
-
-CSS Colors: https://flatuicolors.com/palette/au
-
-1) improve colors
-2) more workers  (jsonrpc listeners?)
-3) two eth accounts .. xfers and mints
-4) separate geth
-5) why does it say 'Reply:OK' ??
-
 ### BASIC SETUP  (needs Node8)
+0. install Node8
 1. npm install -g node-gyp
 1. sudo apt-get install build-essential
 2. npm install
 3. npm run webpack  #(to build the website files)
-4. rename 'sample.account.config.js' to 'account.config.js' and fill it with the pool's ethereum account data
+4. input private key and address for pool into 'account.config.js'
 
-5. install redis-server and make sure it is running
+5. install redis-server and make sure it is running(see below for instructions)
 6. Edit pool.config.js to your tastes
-7. Edit the website files in /app  to change the look of the website
+7. Edit the website files in /public/  to change the look of the website
 8. npm run server #(or npm run server test for Ropsten test net)
-
+9. Open ports 16129, 11181, 13000, 12095 for outside viewing
 
 ### HOW TO USE
-1. Point a poolminer at your pool using http://localhost:8586  (or ipaddress:8586 or domain.com:8586)  (make sure firewall allows this port)
-2. View website interface at http://localhost:3000 (you can set up nginx to serve the static files in /public)
+1. Point a poolminer at your pool using http://localhost:16129  (or ipaddress:16129 or domain.com:16129)  (make sure firewall allows this port)
+2. View website interface at http://localhost:11181 (you can set up nginx to serve the static files in /public)
 
 
 ## Installing Redis  
@@ -39,13 +45,19 @@ CSS Colors: https://flatuicolors.com/palette/au
 
    - Redis will serve/connect at localhost:6379 by default - the pool will use this port
 
-## Redis Commands
+## Payout and Pool Scripts
+Go to /allScripts/ 
+It has two scripts, one for Paying out the Pool users and one for running the pool (very simple)
 
-LRANGE broadcasted_payments 0 -1
+## For aRunPayouts.sh do the following:
+
+Must approve from your pool account ABAS on MultiSend contract for the payout script to work
+
+Go TO: 
+
+https://arbiscan.io/token/0x027e2eB1C79bD1921a29fd377A8C978B3193401c#writeContract#F2
 
 
-
-
-## TODO / BUGS
-- Add more clustering/workers and more JSONRPC/socket ports to handle heavy loads
-- Make sure good solns ARE BEING TRANFERRED
+Enter:
+spender: 0xD3d9c1b979D24604eCB595Df76065b4b76489D32
+amount: 99999999999999999999999999999999999
