@@ -48,8 +48,11 @@ A pool for mining RC20 Tokens
 ## Redis Commands
 
 Must approve from your pool account ABAS on MultiSend contract @ for the payout contract
+
 Go TO: 
+
 https://arbiscan.io/token/0x027e2eB1C79bD1921a29fd377A8C978B3193401c#writeContract#F2
+
 
 Enter:
 spender: 0xD3d9c1b979D24604eCB595Df76065b4b76489D32
