@@ -45,7 +45,7 @@ A pool for mining RC20 Tokens
 
    - Redis will serve/connect at localhost:6379 by default - the pool will use this port
 
-## Redis Commands
+## Payout Script
 
 Must approve from your pool account ABAS on MultiSend contract @ for the payout contract
 
